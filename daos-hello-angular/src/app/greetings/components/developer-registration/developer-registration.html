@@ -1,0 +1,50 @@
+<h1>New Developer</h1>
+
+<!-- Form to input developer details, submits on Register -->
+<form [formGroup]="developerFormGroup" (ngSubmit)="submitRegistrationRequest()">
+  <!-- First Name input with label -->
+  <label for="first-name">First Name: </label>
+  <input id="first-name" type="text" formControlName="firstNameFC">
+  <!-- Validation errors for firstName -->
+  @if (developerFormGroup.get('firstNameFC')?.touched && developerFormGroup.get('firstNameFC')?.invalid) {
+    @if (developerFormGroup.get('firstNameFC')?.errors?.['required']) {
+      <div class="error">First name is required.</div>
+    }
+    @if (developerFormGroup.get('firstNameFC')?.errors?.['minlength']) {
+      <div class="error">First name must be at least 2 characters.</div>
+    }
+  }
+
+  <!-- Last Name input with label -->
+  <label for="last-name">Last Name: </label>
+  <input id="last-name" type="text" formControlName="lastNameFC">
+  <!-- Validation errors for lastName -->
+  @if (developerFormGroup.get('lastNameFC')?.touched && developerFormGroup.get('lastNameFC')?.invalid) {
+    @if (developerFormGroup.get('lastNameFC')?.errors?.['required']) {
+      <div class="error">Last name is required.</div>
+    }
+    @if (developerFormGroup.get('lastNameFC')?.errors?.['minlength']) {
+      <div class="error">Last name must be at least 2 characters.</div>
+    }
+  }
+
+  <!-- Language input with label -->
+  <label for="language">Programming Language : </label>
+  <input id="language" type="text" formControlName="languageFC">
+  <!-- Validation errors for language -->
+  @if (developerFormGroup.get('languageFC')?.touched && developerFormGroup.get('languageFC')?.invalid) {
+    @if (developerFormGroup.get('languageFC')?.errors?.['required']) {
+      <div class="error">Language is required.</div>
+    }
+    @if (developerFormGroup.get('languageFC')?.errors?.['minlength']) {
+      <div class="error">Language must be at least 2 characters.</div>
+    }
+  }
+
+  <!-- Button group for form actions -->
+  <div class="button-group">
+    <button type="submit" [disabled]="developerFormGroup.invalid">Register</button>
+    <button type="button" (click)="dropRegistration()">Unregister</button>
+    <button type="button" (click)="clearForm()">Clear Form</button>
+  </div>
+</form>

@@ -1,0 +1,6 @@
+<app-developer-registration
+  (registerDeveloper)="updateRegisteredDeveloper($event.developer, $event.language)"
+  (dropDeveloper)="resetRegisteredDeveloper()"/>
+<app-developer-greeting
+  [developer]="developer()"
+  [language]="language()"/>
